@@ -19,6 +19,7 @@ This repository documents my progression from fundamental concepts to advanced t
 
 ## Repository Structure
 
+````
 c-systems-roadmap/
 ├── README.md
 ├── .gitignore
@@ -60,7 +61,7 @@ c-systems-roadmap/
     ├── file-system/
     ├── process-scheduler/
     └── cpu-emulator/
-
+````
 
 
 ---
