@@ -130,7 +130,7 @@ c-systems-roadmap/
 
 ---
 
-## 💻 Philosophy
+## Philosophy
 
 This repository is not just about writing code —  
 it’s about understanding how computers actually work under the hood.
