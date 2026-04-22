@@ -1,10 +1,11 @@
 #include "prt_iter.h"
 
 int main(void){
- char *name = "Isabella";
- char last_name[] = "Marques";
+    char *name = "Isabella";
+    char last_name[] = "Marques";
  
- prt_iter(name);
- prt_iter(last_name);
+    prt_iter(name);
+    prt_iter(last_name);
 
+    return 0;
 }

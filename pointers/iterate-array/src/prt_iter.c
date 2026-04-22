@@ -3,6 +3,6 @@
 
 void prt_iter(char *s){
     for(char *p = s; *p != '\0'; p++){
-         printf("%c\n", *p);
+        printf("%c\n", *p);
     }
 }
