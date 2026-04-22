@@ -70,12 +70,12 @@ c-systems-roadmap/
 
 ### 🔹 Pointers
 - [x] Swap variables using pointers
-- [ ] Iterate through an array using only pointers
+- [x] Iterate through an array using only pointers
 - [ ] Reverse a string using pointers
 - [ ] Manual buffer manipulation
 
 ### 🔹 String Functions
-- [ ] Implement `strlen`
+- [x] Implement `strlen`
 - [ ] Implement `strcpy`
 - [ ] Implement `strcmp`
 
