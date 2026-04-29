@@ -76,7 +76,7 @@ c-systems-roadmap/
 
 ### 🔹 String Functions
 - [x] Implement `strlen`
-- [ ] Implement `strcpy`
+- [x] Implement `strcpy`
 - [ ] Implement `strcmp`
 
 ### 🔹 Dynamic Memory
