@@ -18,5 +18,14 @@ int main(void){
 
     printf("%d\n", len);
 
+    // Testing my_strcpm
+ 
+    const char *dog = "dog";
+    const char *cat = "cat";
+ 
+    if((my_strcpm(dog, cat)) == 0){
+        printf("Same");
+    }
+
     return 0;
 }
