@@ -1,155 +1,232 @@
 # C Systems Roadmap
 
-A structured journey through low-level programming in C — from pointers and memory manipulation to building complete system-level applications.
+A structured journey through low-level programming in C — from pointers and memory manipulation to system-level applications and simulations.
 
-This repository documents my progression from fundamental concepts to advanced topics such as concurrency, process management, and system design.
+This repository documents my progression through C and systems programming, starting with fundamental concepts and gradually moving toward data structures, memory management, processes, concurrency, and low-level system design.
 
 ---
 
 ## Objectives
 
-- Master pointers and memory management in C
-- Understand how data is stored and manipulated at a low level
+- Master pointers and manual memory management in C
+- Understand how data is stored, accessed, and manipulated at a low level
 - Reimplement core standard library functions
 - Build fundamental data structures from scratch
-- Explore processes, threads, and synchronization
+- Work with files, binary data, and terminal-based programs
+- Explore processes, inter-process communication, threads, and synchronization
 - Develop system-level applications and simulations
 
 ---
 
 ## Repository Structure
 
-````
+```txt
 c-systems-roadmap/
 ├── README.md
 ├── .gitignore
-├── pointers/
-│   ├── swap-variables/
-│   ├── iterate-array/
-│   ├── reverse-string/
-│   └── manual-buffer/
-├── string-functions/
-│   ├── strlen/
-│   ├── strcpy/
-│   └── strcmp/
-├── dynamic-memory/
-│   ├── dynamic-matrix/
-│   ├── dynamic-vector/
-│   ├── people-list/
-│   └── memory-debugging/
-├── data-structures/
-│   ├── linked-list/
-│   ├── stack/
-│   └── queue/
-├── file-io/
-│   ├── write-struct-binary/
-│   ├── read-struct-binary/
-│   └── terminal-crud/
-├── processes/
-│   ├── fork-basics/
-│   ├── exec-basics/
-│   └── pipes/
-├── concurrency/
-│   ├── threads/
-│   ├── mutex-synchronization/
-│   └── shared-resource/
-├── terminal-apps/
-│   ├── task-manager/
-│   └── mini-shell/
-└── advanced-systems/
+│
+├── 01-pointers/
+│   ├── include/
+│   ├── src/
+│   └── README.md
+│
+├── 02-strings/
+│   ├── include/
+│   ├── src/
+│   └── README.md
+│
+├── 03-dynamic-memory/
+│   ├── include/
+│   ├── src/
+│   └── README.md
+│
+├── 04-data-structures/
+│   ├── include/
+│   ├── src/
+│   └── README.md
+│
+├── 05-files-and-buffers/
+│   ├── include/
+│   ├── src/
+│   └── README.md
+│
+├── 06-processes/
+│   ├── include/
+│   ├── src/
+│   └── README.md
+│
+├── 07-concurrency/
+│   ├── include/
+│   ├── src/
+│   └── README.md
+│
+└── projects/
+    ├── terminal-crud/
+    ├── task-manager/
+    ├── mini-shell/
     ├── custom-malloc/
-    ├── file-system/
+    ├── simple-file-system/
     ├── process-scheduler/
     └── cpu-emulator/
-````
-
+```
 
 ---
 
-## Progress
+## Roadmap Progress
 
-### 🔹 Pointers
+### 01 — Pointers
+
 - [x] Swap variables using pointers
 - [x] Iterate through an array using only pointers
+- [ ] Reverse an array using pointers
 - [ ] Reverse a string using pointers
 - [ ] Manual buffer manipulation
 
-### 🔹 String Functions
+### 02 — Strings
+
 - [x] Implement `strlen`
 - [x] Implement `strcpy`
 - [ ] Implement `strcmp`
+- [ ] Implement string reversal
+- [ ] Practice pointer-based string traversal
 
-### 🔹 Dynamic Memory
-- [ ] Dynamic matrix (pointer to pointer)
+### 03 — Dynamic Memory
+
+- [ ] Dynamic matrix using pointer to pointer
 - [ ] Dynamic vector with manual resize
-- [ ] Dynamic list of people (struct + pointers)
+- [ ] Dynamic list of people using `struct` and pointers
 - [ ] Memory bug fixing
+- [ ] Practice avoiding memory leaks, dangling pointers, and invalid access
 
-### 🔹 Data Structures
-- [ ] Linked list (insert, remove, search)
+### 04 — Data Structures
+
+- [ ] Linked list
+- [ ] Insert node
+- [ ] Remove node
+- [ ] Search node
 - [ ] Stack
 - [ ] Queue
 
-### 🔹 File I/O
+### 05 — Files and Buffers
+
+- [ ] Manual buffer manipulation
 - [ ] Write struct to binary file
 - [ ] Read struct from binary file
-- [ ] Terminal-based CRUD system
+- [ ] Store and retrieve structured data
 
-### 🔹 Processes
-- [ ] Process creation with `fork()`
+### 06 — Processes
+
+- [ ] Create processes with `fork()`
 - [ ] Execute programs with `exec()`
-- [ ] Inter-process communication with pipes
+- [ ] Communicate between processes with pipes
+- [ ] Understand parent and child process behavior
 
-### 🔹 Concurrency
-- [ ] Threads
-- [ ] Mutex synchronization
-- [ ] Shared resource concurrency
+### 07 — Concurrency
 
-### 🔹 Terminal Applications
-- [ ] Task manager (CLI)
+- [ ] Create programs with threads
+- [ ] Work with shared resources
+- [ ] Implement synchronization with mutex
+- [ ] Understand race conditions
+
+---
+
+## Projects
+
+Larger exercises and system-oriented applications are placed in the `projects/` directory.
+
+These projects combine multiple concepts from the roadmap and may later become independent repositories.
+
+### Planned Projects
+
+- [ ] Terminal-based CRUD system
+- [ ] Task manager CLI
 - [ ] Mini shell
-
-### 🔹 Advanced Systems
 - [ ] Custom `malloc` implementation
 - [ ] Simple file system
 - [ ] Process scheduling simulator
-- [ ] CPU emulator
+- [ ] Simple CPU emulator
+
+---
+
+## Module Organization
+
+Each module may contain:
+
+```txt
+module-name/
+├── include/
+│   └── module_name.h
+├── src/
+│   ├── module_name.c
+│   └── main.c
+└── README.md
+```
+
+### Example
+
+```txt
+02-strings/
+├── include/
+│   └── my_string.h
+├── src/
+│   ├── my_string.c
+│   └── main.c
+└── README.md
+```
+
+The goal is to group small exercises by topic instead of creating a full project structure for every small function.
+
+For example, functions such as `my_strlen`, `my_strcpy`, and `my_strcmp` belong together inside the `02-strings` module.
 
 ---
 
 ## Key Concepts
 
 - Pointer arithmetic
-- Memory layout and manual control
-- Dynamic memory allocation (`malloc`, `free`)
+- Manual memory control
+- Stack and heap memory
+- Dynamic memory allocation with `malloc`, `calloc`, `realloc`, and `free`
+- Strings and arrays in C
+- Structs and linked data
 - Data structures implementation
-- File handling and binary storage
-- Process management and IPC
-- Multithreading and synchronization
-- Systems design fundamentals
+- Binary file handling
+- Process creation and execution
+- Inter-process communication
+- Threads and synchronization
+- Systems programming fundamentals
 
 ---
 
 ## Philosophy
 
-This repository is not just about writing code —  
-it’s about understanding how computers actually work under the hood.
+This repository is not just about writing code.
 
-Every project here focuses on **manual control**, **memory awareness**, and **low-level reasoning**.
+It is about understanding how computers work under the hood.
+
+Every module focuses on:
+
+- Manual control
+- Memory awareness
+- Low-level reasoning
+- Clean code organization
+- Progressive learning
+- Building strong foundations before moving to larger systems
 
 ---
 
 ## Notes
 
-- Each project is organized in its own folder
-- Some projects include their own README with explanations
-- Code is written with clarity and learning progression in mind
+- Small exercises are grouped by topic inside modules
+- Larger applications are placed inside the `projects/` directory
+- Some projects may later become independent repositories
+- Each module can include its own README with explanations, concepts, and compilation instructions
+- Code is written with clarity, learning progression, and maintainability in mind
 
 ---
 
 ## Work in Progress
 
-This roadmap is continuously evolving as I deepen my understanding of C and systems programming.
+This roadmap is continuously evolving as I deepen my understanding of C, memory management, data structures, and systems programming.
 
 ---
 
@@ -158,6 +235,4 @@ This roadmap is continuously evolving as I deepen my understanding of C and syst
 - Build a minimal operating system
 - Explore kernel-level programming
 - Study computer architecture in depth
-
----
-
+- Implement more low-level tools and simulations
