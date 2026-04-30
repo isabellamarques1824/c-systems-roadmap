@@ -1,7 +1,10 @@
-#include "swap.h"
+#include "pointers.h"
 #include <stdio.h>
 
 int main(void){
+
+
+    //Testing swap function
 
     int num1 = 15;
     int *p1 = &num1;
@@ -18,6 +21,15 @@ int main(void){
 
     printf("Current value of num1: %d\nAddress of num1: %p\n", *p1, p1);
     printf("Current value of num2: %d\nAddress of num2: %p\n", *p2, p2);
+
+
+    //Testing prt_iter function
+
+    char *name = "Isabella";
+    char last_name[] = "Marques";
+ 
+    prt_iter(name);
+    prt_iter(last_name);
     
     return 0;
 }

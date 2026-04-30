@@ -1,5 +1,14 @@
-#include "my_strcpy.h"
+#include "strings.h"
 
+int my_strlen(const char *s){
+    int len = 0;
+
+    for(const char *p = s; *p != '\0'; p++){
+        len++;
+    }
+
+    return len;
+}
 
 char *my_strcpy(char *new_s, const char *s){
     char *start = new_s;
