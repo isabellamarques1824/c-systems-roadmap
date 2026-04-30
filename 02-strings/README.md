@@ -10,7 +10,7 @@ The goal is to practice how strings work as arrays of characters, how to travers
 
 - [x] Implement `strlen`
 - [x] Implement `strcpy`
-- [ ] Implement `strcmp`
+- [x] Implement `strcmp`
 
 ---
 
@@ -33,6 +33,7 @@ The goal is to practice how strings work as arrays of characters, how to travers
 ```c
 int my_strlen(const char *str);
 char *my_strcpy(char *dest, const char *src);
+int my_strcpm(const char *s1, const char *s2);
 ```
 
 ---
