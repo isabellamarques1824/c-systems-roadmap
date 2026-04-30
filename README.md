@@ -83,7 +83,7 @@ c-systems-roadmap/
 
 - [x] Implement `strlen`
 - [x] Implement `strcpy`
-- [ ] Implement `strcmp`
+- [x] Implement `strcmp`
 - [ ] Implement `strcat`
 - [ ] Implement `strchr`
 - [ ] Implement `strstr`
