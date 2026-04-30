@@ -71,24 +71,22 @@ c-systems-roadmap/
 ```
 
 ---
-
 ## Roadmap Progress
 
 ### 01 — Pointers
 
 - [x] Swap variables using pointers
 - [x] Iterate through an array using only pointers
-- [ ] Reverse an array using pointers
 - [ ] Reverse a string using pointers
-- [ ] Manual buffer manipulation
 
 ### 02 — Strings
 
 - [x] Implement `strlen`
 - [x] Implement `strcpy`
 - [ ] Implement `strcmp`
-- [ ] Implement string reversal
-- [ ] Practice pointer-based string traversal
+- [ ] Implement `strcat`
+- [ ] Implement `strchr`
+- [ ] Implement `strstr`
 
 ### 03 — Dynamic Memory
 
@@ -96,37 +94,39 @@ c-systems-roadmap/
 - [ ] Dynamic vector with manual resize
 - [ ] Dynamic list of people using `struct` and pointers
 - [ ] Memory bug fixing
-- [ ] Practice avoiding memory leaks, dangling pointers, and invalid access
+- [ ] Implement `strdup` using `malloc`
+- [ ] Create a dynamic array of strings
 
 ### 04 — Data Structures
 
-- [ ] Linked list
-- [ ] Insert node
-- [ ] Remove node
-- [ ] Search node
+- [ ] Linked list: insert, remove, and search
 - [ ] Stack
 - [ ] Queue
+- [ ] Implement a doubly linked list
+- [ ] Implement a simple hash table
 
 ### 05 — Files and Buffers
 
 - [ ] Manual buffer manipulation
 - [ ] Write struct to binary file
 - [ ] Read struct from binary file
-- [ ] Store and retrieve structured data
+- [ ] Create a line-by-line file reader
+- [ ] Create a simple CSV parser
 
 ### 06 — Processes
 
-- [ ] Create processes with `fork()`
-- [ ] Execute programs with `exec()`
-- [ ] Communicate between processes with pipes
-- [ ] Understand parent and child process behavior
+- [ ] Create process with `fork()`
+- [ ] Execute commands with `exec()`
+- [ ] Inter-process communication with pipes
+- [ ] Execute another program with arguments
 
 ### 07 — Concurrency
 
-- [ ] Create programs with threads
-- [ ] Work with shared resources
-- [ ] Implement synchronization with mutex
-- [ ] Understand race conditions
+- [ ] Create program with threads
+- [ ] Mutex synchronization
+- [ ] Concurrent program with shared resource
+- [ ] Create a shared counter without mutex and fix it with mutex
+- [ ] Implement a simple producer-consumer problem
 
 ---
 
@@ -138,10 +138,10 @@ These projects combine multiple concepts from the roadmap and may later become i
 
 ### Planned Projects
 
-- [ ] Terminal-based CRUD system
-- [ ] Task manager CLI
+- [ ] Simple terminal-based database CRUD
+- [ ] Terminal task manager
 - [ ] Mini shell
-- [ ] Custom `malloc` implementation
+- [ ] Simplified `malloc` implementation
 - [ ] Simple file system
 - [ ] Process scheduling simulator
 - [ ] Simple CPU emulator
