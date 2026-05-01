@@ -77,7 +77,7 @@ c-systems-roadmap/
 
 - [x] Swap variables using pointers
 - [x] Iterate through an array using only pointers
-- [ ] Reverse a string using pointers
+- [x] Reverse a string using pointers
 
 ### 02 — Strings
 
