@@ -30,6 +30,15 @@ int main(void){
  
     prt_iter(name);
     prt_iter(last_name);
+
+    //Testing str_rvr function
+    
+    char animal[] = "Camaleao";
+    printf("%s\n", animal);
+
+    str_rvr(animal);
+
+    printf("%s\n", animal);
     
     return 0;
 }

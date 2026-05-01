@@ -10,7 +10,7 @@ The goal is to practice memory addresses, dereferencing, passing variables by re
 
 - [x] Swap variables using pointers
 - [x] Iterate through an array using only pointers
-- [ ] Reverse a string using pointers
+- [x] Reverse a string using pointers
 
 ---
 
@@ -33,6 +33,7 @@ The goal is to practice memory addresses, dereferencing, passing variables by re
 ```c
 void swap(int *a, int *b);
 void print_array_with_pointers(int *array, int size);
+void str_rvr(char *s);
 ```
 
 ---
