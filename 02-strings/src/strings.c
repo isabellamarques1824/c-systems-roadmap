@@ -33,3 +33,18 @@ int my_strcpm(const char *s1, const char *s2){
    
     return *p1 - *p2;
 }
+
+char *my_strcat(char *dest, const char *src){
+
+    char *p;
+
+    for(p = dest; *p != '\0'; p++){
+
+    }
+    for(const char *p2 = src; *p2 != '\0'; p2++, p++){
+        *p = *p2;
+    }
+    *p = '\0';
+
+    return dest;
+}

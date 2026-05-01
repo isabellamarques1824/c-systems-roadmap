@@ -11,6 +11,7 @@ The goal is to practice how strings work as arrays of characters, how to travers
 - [x] Implement `strlen`
 - [x] Implement `strcpy`
 - [x] Implement `strcmp`
+- [x] Implement `strcat`
 
 ---
 

@@ -27,5 +27,19 @@ int main(void){
         printf("Same");
     }
 
+    //Testing my_strcat function
+
+    char first_name[30] = "Isabella";
+    char last_name[] = "Marques";
+
+    printf("%s\n", first_name);
+    printf("%s\n", last_name);
+
+    my_strcat(first_name, last_name);
+    
+
+    printf("%s\n", first_name);
+    printf("%s\n", last_name);
+
     return 0;
 }
