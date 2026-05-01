@@ -35,6 +35,7 @@ The goal is to practice how strings work as arrays of characters, how to travers
 int my_strlen(const char *str);
 char *my_strcpy(char *dest, const char *src);
 int my_strcpm(const char *s1, const char *s2);
+char *my_strcat(char *dest, const char *src);
 ```
 
 ---
