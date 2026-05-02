@@ -1,4 +1,5 @@
 #include "strings.h"
+#include <stdio.h>
 
 int my_strlen(const char *s){
     int len = 0;
@@ -47,4 +48,21 @@ char *my_strcat(char *dest, const char *src){
     *p = '\0';
 
     return dest;
+}
+
+char *my_strchr(const char *s, int c){
+
+    const char *p;
+
+    for (p = s; *p != '\0'; p++)
+    {
+        if(*p == (char)c){
+            return (char *)p;
+        }
+    }
+
+    if((char)c == '\0'){
+        return (char *)p;
+    }
+    return NULL;
 }

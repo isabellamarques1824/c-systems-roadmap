@@ -41,5 +41,13 @@ int main(void){
     printf("%s\n", first_name);
     printf("%s\n", last_name);
 
+    // Testing my_strchr function
+
+    const char *country = "Brazil";
+
+    char *c = my_strchr(country, 'z');
+
+    printf("%c", *c);
+
     return 0;
 }
