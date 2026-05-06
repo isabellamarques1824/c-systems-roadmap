@@ -53,7 +53,7 @@ int main(void){
 
     char *needle = my_strstr("girlfriend", "friend");
 
-    printf("%s\n", needle);
+    printf("%s\n'", needle);
 
     return 0;
 
