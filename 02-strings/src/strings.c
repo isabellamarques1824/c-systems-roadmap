@@ -66,3 +66,29 @@ char *my_strchr(const char *s, int c){
     }
     return NULL;
 }
+
+char *my_strstr(char *haystack, char *needle){
+
+    if(*needle == '\0'){
+        return haystack;
+    }
+    char *p1, *p2;
+
+    for (p1 = haystack; *p1 != '\0'; p1++)
+    {
+        char *p1cpy = p1;
+
+        for (p2 = needle; *p2 != '\0' && *p1cpy != '\0'; p2++){
+
+            if(*p1cpy != *p2){
+                break;
+            }
+            p1cpy++;
+        }
+        if(*p2 == '\0'){
+            return p1;
+        }
+    }
+    return NULL;
+    
+}

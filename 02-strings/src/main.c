@@ -47,7 +47,14 @@ int main(void){
 
     char *c = my_strchr(country, 'z');
 
-    printf("%c", *c);
+    printf("%c\n", *c);
+
+    // Testing my_strstr fuction3
+
+    char *needle = my_strstr("girlfriend", "friend");
+
+    printf("%s\n", needle);
 
     return 0;
+
 }
