@@ -86,7 +86,7 @@ c-systems-roadmap/
 - [x] Implement `strcmp`
 - [x] Implement `strcat`
 - [x] Implement `strchr`
-- [ ] Implement `strstr`
+- [x] Implement `strstr`
 
 ### 03 — Dynamic Memory
 
