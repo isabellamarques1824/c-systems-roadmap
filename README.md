@@ -90,7 +90,7 @@ c-systems-roadmap/
 
 ### 03 — Dynamic Memory
 
-- [ ] Dynamic matrix using pointer to pointer
+- [x] Dynamic matrix using pointer to pointer
 - [ ] Dynamic vector with manual resize
 - [ ] Dynamic list of people using `struct` and pointers
 - [ ] Memory bug fixing
