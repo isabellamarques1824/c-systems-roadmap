@@ -91,7 +91,7 @@ c-systems-roadmap/
 ### 03 — Dynamic Memory
 
 - [x] Dynamic matrix using pointer to pointer
-- [ ] Dynamic vector with manual resize
+- [x] Dynamic vector with manual resize
 - [ ] Dynamic list of people using `struct` and pointers
 - [ ] Memory bug fixing
 - [ ] Implement `strdup` using `malloc`

@@ -9,7 +9,7 @@ The goal is to practice how memory allocation works with `malloc`, `calloc`, `re
 ## Exercises
 
 * [x] Dynamic matrix using pointer to pointer
-* [ ] Dynamic vector with manual resize
+* [x] Dynamic vector with manual resize
 * [ ] Dynamic list of people using `struct` and pointers
 * [ ] Memory bug fixing
 * [ ] Implement `strdup` using `malloc`
@@ -35,6 +35,7 @@ The goal is to practice how memory allocation works with `malloc`, `calloc`, `re
 
 ```c
 int **create_matrix(int rows, int cols);
+void dynamic_array();
 
 ```
 

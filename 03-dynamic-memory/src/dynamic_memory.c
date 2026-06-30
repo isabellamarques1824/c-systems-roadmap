@@ -15,7 +15,7 @@ int **matrix(int rows, int cols){
                     free(matrix[j]);
                 }
                 free(matrix);
-                printf("Erro ao alocar memória.");
+                printf("Error allocating memory");
                 return NULL;
             }
         }
@@ -31,8 +31,55 @@ int **matrix(int rows, int cols){
         return matrix;
 
     }else{
-        printf("Erro ao alocar memória.");
+        printf("Error allocating memory");
         return NULL;
     }
 
+}
+
+void dynamic_array(){
+
+    int capacity = 4, c, size = 0;
+    char *vector;
+
+    vector = malloc(capacity * sizeof(char));
+    if(!vector){
+        printf("Error allocating memory");
+        return;
+    }
+
+    while ((c = getchar()) != EOF)
+    {
+        if(size == capacity){
+            char *new_vector;
+
+            new_vector = malloc((capacity+4) * sizeof(char));
+
+            if(!new_vector){
+                printf("Error allocating memory");
+                return;
+            }
+
+            for (int i = 0; i < size; i++)
+            {
+                new_vector[i] = vector[i];
+            }
+
+            free(vector);
+
+            vector = new_vector;
+
+            capacity += 4;  
+        }
+
+        vector[size] = c;
+        size++;
+    }
+
+    for(int i = 0; i < size; i++){
+        putchar(vector[i]);
+    }
+    
+    free(vector);
+    
 }
