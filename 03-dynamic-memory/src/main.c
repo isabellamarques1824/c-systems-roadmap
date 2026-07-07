@@ -1,4 +1,5 @@
 #include "dynamic_memory.h"
+#include "debugging.h"
 
 int main(void){
     
@@ -11,7 +12,11 @@ int main(void){
 
     // Testing people_dynamic_list function
 
-    people_dynamic_list();
+    // people_dynamic_list();
+
+    //  Memory bug fixing
+
+    challenge_11();
 
     return 0;
 }
