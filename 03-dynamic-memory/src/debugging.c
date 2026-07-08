@@ -363,7 +363,7 @@ void challenge_11(void)
 }
 
 /*
-    Challenge 01: 
+    Challenge 11: 
 
     1. What is the bug?
     scanf("%s") does not limit how many characters are read. Since the
@@ -407,9 +407,11 @@ void challenge_12(void)
 }
 
 /*
-    Challenge 01: 
+    Challenge 12: 
 
     1. What is the bug?
+    On partial allocation failure, previously allocated rows are not freed
+    before freeing the main matrix pointer, causing a memory leak.
 
 */
 
@@ -439,9 +441,11 @@ void challenge_13(void)
 }
 
 /*
-    Challenge 01: 
+    Challenge 13: 
 
     1. What is the bug?
+    strcpy copies a string that is too large for the fixed-size name
+    buffer, causing a buffer overflow.
 
 */
 
@@ -468,9 +472,11 @@ void challenge_14(void)
 }
 
 /*
-    Challenge 01: 
+    Challenge 15: 
 
     1. What is the bug?
+    The character buffer is printed as a string, but it does not contain
+    a null terminator. This makes printf read past the allocated memory.
 
 */
 
@@ -516,8 +522,10 @@ void challenge_15(void)
 }
 
 /*
-    Challenge 01: 
+    Challenge 15: 
 
     1. What is the bug?
+    The original array is not freed if the resize allocation fails,
+    causing a memory leak.
 
 */

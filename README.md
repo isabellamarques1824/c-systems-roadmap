@@ -93,7 +93,7 @@ c-systems-roadmap/
 - [x] Dynamic matrix using pointer to pointer
 - [x] Dynamic vector with manual resize
 - [x] Dynamic list of people using `struct` and pointers
-- [ ] Memory bug fixing
+- [x] Memory bug fixing
 - [ ] Implement `strdup` using `malloc`
 - [ ] Create a dynamic array of strings
 
