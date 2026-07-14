@@ -94,7 +94,7 @@ c-systems-roadmap/
 - [x] Dynamic vector with manual resize
 - [x] Dynamic list of people using `struct` and pointers
 - [x] Memory bug fixing
-- [ ] Implement `strdup` using `malloc`
+- [x] Implement `strdup` using `malloc`
 - [ ] Create a dynamic array of strings
 
 ### 04 — Data Structures

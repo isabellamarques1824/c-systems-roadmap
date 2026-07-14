@@ -16,7 +16,13 @@ int main(void){
 
     //  Memory bug fixing
 
-    challenge_15();
+
+    // Testing my_strdup function
+
+    char *fruta = my_strdup("Banana");
+
+    free(fruta);
+    
 
     return 0;
 }

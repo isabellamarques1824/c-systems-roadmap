@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "dynamic_memory.h"
 
 // Dynamic matrix using pointer to pointer
@@ -177,4 +178,27 @@ void people_dynamic_list(void)
     }
 
     free(people);
+}
+
+
+// Implement `strdup` using `malloc`
+
+char *my_strdup(const char *str){
+    int size = strlen(str) + 1;
+
+    char *copy = malloc(size * sizeof *copy);
+
+    if(!copy){
+        fprintf(stderr, "Error allocating memory\n");
+        return NULL;
+    }
+
+    for (int i = 0; i < size; i++)
+    {
+        copy[i] = str[i];
+    }
+
+    printf("%s", copy);
+    
+    return copy;
 }
