@@ -13,7 +13,7 @@ The goal is to practice how memory allocation works with `malloc`, `calloc`, `re
 - [x] Dynamic list of people using `struct` and pointers
 - [x] Memory bug fixing
 - [x] Implement `strdup` using `malloc`
-- [ ] Create a dynamic array of strings
+- [x] Create a dynamic array of strings
 
 ---
 
@@ -64,6 +64,9 @@ int **create_matrix(int rows, int cols);
 void dynamic_array(void);
 void people_dynamic_list(void);
 char *my_strdup(const char *str);
+void free_strings(char **strings, size_t size);
+void print_strings(char **strings, size_t size);
+char **string_array(size_t *out_size);
 ```
 
 ### Memory Debugging

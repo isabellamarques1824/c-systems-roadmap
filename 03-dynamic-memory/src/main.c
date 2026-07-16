@@ -1,5 +1,6 @@
 #include "dynamic_memory.h"
 #include "debugging.h"
+#include <stdlib.h>
 
 int main(void){
     
@@ -22,6 +23,14 @@ int main(void){
     char *fruta = my_strdup("Banana");
 
     free(fruta);
+
+    // testing strings_array function
+
+    size_t size;
+
+    char **array = string_array(&size);
+
+    free_strings(array, size);
     
 
     return 0;

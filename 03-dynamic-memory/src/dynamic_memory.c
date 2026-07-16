@@ -197,8 +197,110 @@ char *my_strdup(const char *str){
     {
         copy[i] = str[i];
     }
-
-    printf("%s", copy);
     
     return copy;
+}
+
+// Create a dynamic array of strings
+
+void free_strings(char **strings, size_t size){
+    for (size_t i = 0; i < size; i++)
+    {
+        free(strings[i]);
+    }
+    free(strings);
+    
+}
+
+void print_strings(char **strings, size_t size){
+    for(size_t i = 0; i < size; i++){
+        printf("%zu: %s\n", i+1, strings[i]);
+    }
+}
+
+#define MAX 100
+
+char **string_array(size_t *out_size){
+
+    *out_size = 0;
+    size_t capacity = 4;
+    size_t size = 0;
+    char answer;
+
+    char **strings = malloc(capacity * sizeof *strings);
+
+    if(!strings){
+        fprintf(stderr, "Error allocating memory\n");
+        return NULL;
+    }
+
+    while(1){
+        printf("\nAdd a new string to the list? Y/N: ");
+
+        if (scanf(" %c", &answer) != 1) {
+            fprintf(stderr, "Error reading answer\n");
+            free_strings(strings, size);
+            return NULL;
+        }
+
+        int ch;
+        while ((ch = getchar()) != '\n' && ch != EOF) {
+
+        }
+
+        if(answer == 'Y'){
+            if(size == capacity){
+
+                size_t new_capacity = capacity * 2;
+
+                char **temp = realloc(strings, new_capacity * sizeof *strings);
+
+                if(!temp){
+                    fprintf(stderr, "Error allocating memory\n");
+                    free_strings(strings, size);
+                    return NULL;
+                }
+
+                strings = temp;
+                capacity = new_capacity;
+
+            }
+            char temp[MAX];
+
+            printf("New string: ");
+
+            if (fgets(temp, MAX, stdin) == NULL) {
+                fprintf(stderr, "Error reading string\n");
+                free_strings(strings, size);
+                return NULL;
+            }
+
+            char *newline = strchr(temp, '\n');
+            
+            if (newline != NULL) {
+                *newline = '\0';
+            }
+
+            strings[size] = my_strdup(temp);
+
+            if(!strings[size]){
+                fprintf(stderr, "Error allocating memory\n");
+                free_strings(strings, size);
+                return NULL;
+            }
+
+            size++;
+
+            print_strings(strings, size);
+
+        }else if( answer == 'N'){
+            print_strings(strings, size);
+
+            *out_size = size;
+            return strings;
+        }else{
+            printf("Error reading answer.\n");
+        }
+    }
+
 }
