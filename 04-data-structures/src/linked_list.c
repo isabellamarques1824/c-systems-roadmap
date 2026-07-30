@@ -34,4 +34,18 @@ Node *insertNode(Node *head, Node *node){
     return head;
 }
 
+void printList(Node *head){
+    if(head == NULL){
+        printf("The list is empty.");
+        return;
+    }
+
+    Node *temp = head;
+
+    while(temp != NULL){
+        printf("Name: %s\nAge: %d\n\n", temp->person.name, temp->person.age);
+        temp = temp->next;
+    }
+}
+
 

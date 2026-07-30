@@ -5,5 +5,6 @@ typedef struct Person;
 typedef struct Node;
 Node *createNode(Person person);
 Node *insertNode(Node *head, Node *node);
+void printList(Node *head);
 
 #endif
