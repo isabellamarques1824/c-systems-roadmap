@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "02-strings/include/strings.h"
 
 typedef struct Person{
     char *name;
@@ -46,6 +47,17 @@ void printList(Node *head){
         printf("Name: %s\nAge: %d\n\n", temp->person.name, temp->person.age);
         temp = temp->next;
     }
+}
+
+Node *findNodeByName(Node *head, char *name){
+    Node *temp = head;
+
+    while(temp != NULL && (my_strcmp(temp->person.name, name) != 0)){
+        temp = temp->next;
+    }
+
+    return temp;
+
 }
 
 

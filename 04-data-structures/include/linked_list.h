@@ -6,5 +6,6 @@ typedef struct Node;
 Node *createNode(Person person);
 Node *insertNode(Node *head, Node *node);
 void printList(Node *head);
+Node *findNodeByName(Node *head, char *name);
 
 #endif
