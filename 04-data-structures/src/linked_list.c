@@ -7,7 +7,7 @@ Node *createNode(Person person){
     Node *new_node = malloc(sizeof *new_node);
 
     if(!new_node){
-        printf("Error allocating memory.\n");
+        fprintf(stderr, "Error allocating memory.\n");
         return NULL;
     }
     
