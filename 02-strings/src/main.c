@@ -23,7 +23,7 @@ int main(void){
     const char *dog = "dog";
     const char *cat = "cat";
  
-    if((my_strcpm(dog, cat)) == 0){
+    if((my_strcmp(dog, cat)) == 0){
         printf("Same");
     }
 

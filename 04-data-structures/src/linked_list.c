@@ -1,24 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "02-strings/include/strings.h"
-
-typedef struct Person{
-    char *name;
-    int age;
-} Person;
-
-typedef struct Node{
-    Person person;
-     struct Node *next;
-} Node;
-
-Node *head = NULL;
+#include "linked_list.h"
 
 Node *createNode(Person person){
     Node *new_node = malloc(sizeof *new_node);
 
     if(!new_node){
-        printf("Error allocating memory.");
+        printf("Error allocating memory.\n");
         return NULL;
     }
     
@@ -37,7 +26,7 @@ Node *insertNode(Node *head, Node *node){
 
 void printList(Node *head){
     if(head == NULL){
-        printf("The list is empty.");
+        printf("The list is empty.\n");
         return;
     }
 
@@ -61,3 +50,55 @@ Node *findNodeByName(Node *head, char *name){
 }
 
 
+Node *removeNodeByName(Node *head, const char *name){
+
+    if (head == NULL)
+    {
+        printf("The list is empty.\n");
+        return NULL;
+    }
+
+    if(my_strcmp(head->person.name, name) == 0){
+        Node *temporary = head->next; 
+
+        free(head->person.name);
+        free(head); 
+
+        head = temporary;
+
+        return head;
+    }
+
+    Node *temp = head->next;
+    Node *previous = head;
+
+        while (temp != NULL && (my_strcmp(temp->person.name, name) != 0))
+    {
+        previous = temp;
+        temp = temp->next;
+    }
+
+    if(temp == NULL){
+        return head;
+    }
+
+    previous->next = temp->next;
+
+    free(temp->person.name);
+    free(temp);
+
+    return head;
+}
+
+void freeNodes(Node *head){
+    Node *temp = head;
+
+    while (temp != NULL)
+    {
+        Node *next = temp->next;
+        free(temp->person.name);
+        free(temp);
+
+        temp = next;
+    }
+}

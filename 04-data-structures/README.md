@@ -8,7 +8,7 @@ The goal is to practice how data structures are created and manipulated manually
 
 ## Exercises
 
-- [ ] Linked list: insert, remove, and search
+- [x] Linked list: insert, remove, and search
 - [ ] Stack
 - [ ] Queue
 - [ ] Implement a doubly linked list
@@ -67,6 +67,8 @@ Node *createNode(Person person);
 Node *insertNode(Node *head, Node *node);
 void printList(Node *head);
 Node *findNodeByName(Node *head, char *name);
+Node *removeNodeByName(Node *head, const char *name);
+void freeNodes(Node *head);
 
 ```
 
