@@ -100,7 +100,7 @@ c-systems-roadmap/
 ### 04 — Data Structures
 
 - [x] Linked list: insert, remove, and search
-- [ ] Stack
+- [x] Stack
 - [ ] Queue
 - [ ] Implement a doubly linked list
 - [ ] Implement a simple hash table
