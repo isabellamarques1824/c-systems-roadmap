@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "02-strings/include/strings.h"
+#include <string.h>
 #include "linked_list.h"
 
 Node *createNode(Person person){
@@ -41,7 +41,7 @@ void printList(Node *head){
 Node *findNodeByName(Node *head, char *name){
     Node *temp = head;
 
-    while(temp != NULL && (my_strcmp(temp->person.name, name) != 0)){
+    while(temp != NULL && (strcmp(temp->person.name, name) != 0)){
         temp = temp->next;
     }
 
@@ -57,7 +57,7 @@ Node *removeNodeByName(Node *head, const char *name){
         return NULL;
     }
 
-    if(my_strcmp(head->person.name, name) == 0){
+    if(strcmp(head->person.name, name) == 0){
         Node *temporary = head->next; 
 
         free(head->person.name);
@@ -71,7 +71,7 @@ Node *removeNodeByName(Node *head, const char *name){
     Node *temp = head->next;
     Node *previous = head;
 
-        while (temp != NULL && (my_strcmp(temp->person.name, name) != 0))
+        while (temp != NULL && (strcmp(temp->person.name, name) != 0))
     {
         previous = temp;
         temp = temp->next;

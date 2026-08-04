@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "linked_list.h"
-#include "02-strings/include/strings.h"
+
 
 int main(void)
 {
@@ -12,7 +13,7 @@ int main(void)
 
     /* Create and insert Isa */
     Person isa = {
-        .name = my_strdup("Isa"),
+        .name = strdup("Isa"),
         .age = 20};
 
     if (isa.name == NULL)
@@ -32,7 +33,7 @@ int main(void)
 
     /* Create and insert Alice */
     Person alice = {
-        .name = my_strdup("Alice"),
+        .name = strdup("Alice"),
         .age = 8};
 
     if (alice.name == NULL)
@@ -54,7 +55,7 @@ int main(void)
 
     /* Create and insert Carlos */
     Person carlos = {
-        .name = my_strdup("Carlos"),
+        .name = strdup("Carlos"),
         .age = 32};
 
     if (carlos.name == NULL)
@@ -76,7 +77,7 @@ int main(void)
 
     /* Create and insert Diana */
     Person diana = {
-        .name = my_strdup("Diana"),
+        .name = strdup("Diana"),
         .age = 25};
 
     if (diana.name == NULL)
