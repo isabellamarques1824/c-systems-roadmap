@@ -24,7 +24,7 @@ char *my_strcpy(char *new_s, const char *s){
     return start;
 }
 
-int my_strcpm(const char *s1, const char *s2){
+int my_strcmp(const char *s1, const char *s2){
  
     const char *p1, *p2;
  
