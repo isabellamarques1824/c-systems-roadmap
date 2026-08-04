@@ -57,7 +57,6 @@ Node *findNodeByName(Node *head, char *name){
     }
 
     return temp;
-
 }
 
 
