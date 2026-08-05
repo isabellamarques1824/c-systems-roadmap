@@ -101,7 +101,7 @@ c-systems-roadmap/
 
 - [x] Linked list: insert, remove, and search
 - [x] Stack
-- [ ] Queue
+- [x] Queue
 - [ ] Implement a doubly linked list
 - [ ] Implement a simple hash table
 
