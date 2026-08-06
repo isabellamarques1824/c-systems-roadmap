@@ -24,13 +24,13 @@ Node *insertNode(Node *head, Node *node){
     return head;
 }
 
-void printList(Node *head){
+void printList(const Node *head){
     if(head == NULL){
         printf("The list is empty.\n");
         return;
     }
 
-    Node *temp = head;
+    const Node *temp = head;
 
     while(temp != NULL){
         printf("Name: %s\nAge: %d\n\n", temp->person.name, temp->person.age);

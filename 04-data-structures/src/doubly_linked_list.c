@@ -40,23 +40,110 @@ void insert_front(Node **head, Node **tail, int value){
 }
 
 void insert_back(Node **head, Node **tail, int value){
+    Node *new_node = create_node(value);
 
+    if (!new_node)
+    {
+        return;
+    }
+
+    if (!(*head))
+    {
+        *tail = new_node;
+        *head = new_node;
+
+        return;
+    }
+
+    new_node->prev = *tail;
+    (*tail)->next = new_node;
+    *tail = new_node;
 }
 
 void print_forward(const Node *head){
+    if (head == NULL)
+    {
+        printf("The list is empty.\n");
+        return;
+    }
 
+    const Node *temp = head;
+
+    while (temp != NULL)
+    {
+        printf("Value: %d\n", temp->value);
+        temp = temp->next;
+    }
 }
 
 void print_backward(const Node *tail){
+    if (tail == NULL)
+    {
+        printf("The list is empty.\n");
+        return;
+    }
 
+    const Node *temp = tail;
+
+    while (temp != NULL)
+    {
+        printf("Value: %d\n", temp->value);
+        temp = temp->prev;
+    }
 }
 
 Node *find_node(Node *head, int value){
+    Node *temp = head;
 
+    while (temp != NULL && temp->value != value)
+    {
+        temp = temp->next;
+    }
+
+    return temp;
 }
 
 int remove_value(Node **head, Node **tail, int value){
+    Node *target = find_node(*head, value);
 
+    if(!target){
+        return 0;
+    }
+
+    if(target == *head && target == *tail){
+        *head = NULL;
+        *tail = NULL;
+
+        free(target);
+
+        return 1;
+    }
+
+    if(target == *head){
+        *head = target->next;
+        (*head)->prev = NULL;
+
+        free(target);
+
+        return 1;
+    }
+
+    if(target == *tail){
+        *tail = target->prev;
+        (*tail)->next = NULL;
+
+        free(target);
+
+        return 1;
+
+    }
+
+    target->prev->next = target->next;
+    target->next->prev = target->prev;
+
+    free(target);
+
+    return 1;
 }
 
 void destroy_list(Node **head, Node **tail){
