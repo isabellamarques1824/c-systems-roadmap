@@ -30,8 +30,6 @@ HashTable *create_table(void){
     return new_hash;
 }
 
-// função insert - falta tratar duplicatas com search()
-
 int insert(HashTable *table, const char *key, int value){
 
     if (strlen(key) >= KEY_SIZE)
@@ -41,6 +39,15 @@ int insert(HashTable *table, const char *key, int value){
     }
 
     unsigned int bucket_index = hash(key);
+
+    Entry *existing_entry = search(table, key);
+
+    if( existing_entry != NULL){
+
+        existing_entry->value = value;
+        
+        return 1;
+    }
 
     Entry *new_entry = malloc(sizeof *new_entry);
 
@@ -60,6 +67,15 @@ int insert(HashTable *table, const char *key, int value){
 }
 
 Entry *search(HashTable *table, const char *key){
+    unsigned int bucket_index = hash(key);
+
+    Entry *temp = table->buckets[bucket_index];
+
+    while(temp != NULL && (strcmp(key, temp->key)) != 0){
+        temp = temp->next;
+    }
+
+    return temp;
 
 }
 
