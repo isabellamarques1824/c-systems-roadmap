@@ -11,7 +11,7 @@ The goal is to understand how data structures are represented and manipulated in
 - [x] Linked list
 - [x] Stack
 - [x] Queue
-- [ ] Doubly linked list
+- [x] Doubly linked list
 - [ ] Simple hash table
 
 ---
@@ -23,18 +23,21 @@ The goal is to understand how data structures are represented and manipulated in
 ├── include/
 │   ├── linked_list.h
 │   ├── stack.h
-│   └── queue.h
+│   ├── queue.h
+│   └── doubly_linked_list.h
 ├── src/
 │   ├── linked_list.c
 │   ├── main_linked_list.c
 │   ├── stack.c
 │   ├── stack_main.c
 │   ├── queue.c
-│   └── queue_main.c
+│   ├── queue_main.c
+│   ├── doubly_linked_list.c
+│   └── doubly_main.c
 └── README.md
 ```
 
-> The project structure will continue to expand as the remaining data structures are implemented.
+> The project structure will continue to expand as the remaining data structure is implemented.
 
 ---
 
@@ -245,9 +248,195 @@ After dequeue:
 
 ---
 
+### Doubly Linked List
+
+The doubly linked list stores integer values using dynamically allocated nodes.
+
+Each node contains:
+
+- an integer value;
+- a pointer to the next node;
+- a pointer to the previous node.
+
+Unlike a singly linked list, a doubly linked list can be traversed in both directions:
+
+```txt
+NULL <- [10] <-> [20] <-> [30] -> NULL
+```
+
+The list is represented by two external pointers:
+
+- `head`, which points to the first node;
+- `tail`, which points to the last node.
+
+The exercise practices:
+
+- creating self-referential structures;
+- dynamically allocating nodes;
+- working with pointers to pointers;
+- updating `head` and `tail`;
+- inserting nodes at the beginning of the list;
+- inserting nodes at the end of the list;
+- traversing the list forward;
+- traversing the list backward;
+- searching for values;
+- removing the first node;
+- removing the last node;
+- removing an intermediate node;
+- removing the only node in the list;
+- reconnecting both `next` and `prev` pointers;
+- preventing dangling pointers;
+- releasing all allocated memory.
+
+#### Files
+
+##### `doubly_linked_list.c`
+
+Contains the implementation of the doubly linked list.
+
+##### `doubly_linked_list.h`
+
+Contains the `Node` structure definition and the function prototypes used by the doubly linked list.
+
+##### `doubly_main.c`
+
+Contains tests for insertion, traversal in both directions, searching, removal, list reuse, and memory cleanup.
+
+#### Node Structure
+
+```c
+typedef struct Node {
+    int value;
+    struct Node *next;
+    struct Node *prev;
+} Node;
+```
+
+#### Functions
+
+```c
+Node *create_node(int value);
+void insert_front(Node **head, Node **tail, int value);
+void insert_back(Node **head, Node **tail, int value);
+void print_forward(const Node *head);
+void print_backward(const Node *tail);
+Node *find_node(Node *head, int value);
+int remove_value(Node **head, Node **tail, int value);
+void destroy_list(Node **head, Node **tail);
+```
+
+#### Operation Behavior
+
+- `create_node` allocates and initializes a new node.
+- `insert_front` inserts a new node before the current `head`.
+- `insert_back` inserts a new node after the current `tail`.
+- `print_forward` traverses the list from `head` to `tail`.
+- `print_backward` traverses the list from `tail` to `head`.
+- `find_node` searches for the first node containing a specific value.
+- `remove_value` removes the first node containing a specific value.
+- `destroy_list` releases all nodes and sets both `head` and `tail` to `NULL`.
+
+The `remove_value` function returns:
+
+```txt
+1 — value found and removed successfully
+0 — value was not found
+```
+
+#### Inserting at the Beginning
+
+Before insertion:
+
+```txt
+head
+  ↓
+[20] <-> [30]
+```
+
+After inserting `10`:
+
+```txt
+head
+  ↓
+[10] <-> [20] <-> [30]
+```
+
+The operation updates:
+
+```txt
+new_node->next
+old_head->prev
+head
+```
+
+#### Inserting at the End
+
+Before insertion:
+
+```txt
+[10] <-> [20]
+          ↑
+         tail
+```
+
+After inserting `30`:
+
+```txt
+[10] <-> [20] <-> [30]
+                   ↑
+                  tail
+```
+
+The operation updates:
+
+```txt
+new_node->prev
+old_tail->next
+tail
+```
+
+#### Removing an Intermediate Node
+
+Before removal:
+
+```txt
+[10] <-> [20] <-> [30]
+```
+
+After removing `20`:
+
+```txt
+[10] <-> [30]
+```
+
+The previous and next nodes are connected directly before the target node is released.
+
+#### Empty List
+
+When the list is empty:
+
+```txt
+head = NULL
+tail = NULL
+```
+
+When the first node is inserted, it becomes both the first and last node:
+
+```txt
+head
+  ↓
+ [10]
+  ↑
+tail
+```
+
+---
+
 ## How to Compile
 
 The `-Wall`, `-Wextra`, and `-Wpedantic` flags enable additional compiler warnings.
+
+Run the commands from the `04-data-structures` directory.
 
 ### Linked List
 
@@ -265,6 +454,12 @@ gcc -Wall -Wextra -Wpedantic -I./include src/stack_main.c src/stack.c -o stack
 
 ```bash
 gcc -Wall -Wextra -Wpedantic -I./include src/queue_main.c src/queue.c -o queue
+```
+
+### Doubly Linked List
+
+```bash
+gcc -Wall -Wextra -Wpedantic -I./include src/doubly_main.c src/doubly_linked_list.c -o doubly_linked_list
 ```
 
 ---
@@ -313,6 +508,20 @@ gcc -Wall -Wextra -Wpedantic -I./include src/queue_main.c src/queue.c -o queue
 ./queue
 ```
 
+### Doubly Linked List
+
+#### Windows / PowerShell
+
+```bash
+.\doubly_linked_list.exe
+```
+
+#### WSL / Linux
+
+```bash
+./doubly_linked_list
+```
+
 ---
 
 ## Concepts Practiced
@@ -322,12 +531,16 @@ This module develops practical experience with:
 - structs;
 - pointers;
 - pointers to structs;
+- pointers to pointers;
 - pointer parameters;
 - self-referential structures;
 - arrays;
 - dynamic memory allocation;
 - `malloc` and `free`;
 - linked nodes;
+- head and tail pointers;
+- forward traversal;
+- backward traversal;
 - list traversal;
 - pointer manipulation;
 - insertion and removal operations;
@@ -340,6 +553,7 @@ This module develops practical experience with:
 - queue underflow;
 - LIFO behavior;
 - FIFO behavior;
+- dangling pointer prevention;
 - memory cleanup;
 - abstract data structures.
 
@@ -349,9 +563,9 @@ This module develops practical experience with:
 
 This module is part of my C Systems Roadmap.
 
-The singly linked list exercise introduced nodes allocated dynamically and connected through pointers.
+The singly linked list exercise introduced dynamically allocated nodes connected through pointers.
 
-It also introduced the use of a head pointer to represent the beginning of a list and temporary pointers to traverse its elements without losing access to the first node.
+It also introduced the use of a `head` pointer to represent the beginning of a list and temporary pointers to traverse its elements without losing access to the first node.
 
 The stack exercise introduced the LIFO model and the distinction between:
 
@@ -364,8 +578,16 @@ Unlike the stack, which inserts and removes elements from the same end, the queu
 
 This implementation uses a simple linear array. After a removal, the remaining elements are shifted one position to the left so that the first value remains at index `0`.
 
-The next exercise will implement a doubly linked list, expanding the linked list concept by allowing each node to reference both the previous and the next nodes.
+The doubly linked list exercise expanded the linked list concept by allowing each node to reference both the previous and the next nodes.
 
-The hash table exercise will introduce key-based storage, hash functions, and collision handling.
+It also introduced the use of both `head` and `tail` pointers to represent the boundaries of the list.
+
+Functions that may change these external pointers receive their addresses through `Node **` parameters. This allows operations such as insertion, removal, and destruction to update the original `head` and `tail` variables.
+
+The doubly linked list can be traversed from beginning to end using `next` and from end to beginning using `prev`.
+
+Removing a node requires reconnecting both neighboring directions before releasing its memory.
+
+The next exercise will implement a simple hash table, introducing key-based storage, hash functions, indexing, and collision handling.
 
 This module is an important step before studying files, buffers, processes, compilers, operating systems, and more advanced systems programming concepts.

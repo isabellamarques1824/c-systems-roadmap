@@ -27,7 +27,7 @@ void insert_front(Node **head, Node **tail, int value){
 
     if(!(*head)){
         *head = new_node;
-        *tail = *head;
+        *tail = new_node;
 
         return;
     }
@@ -147,5 +147,16 @@ int remove_value(Node **head, Node **tail, int value){
 }
 
 void destroy_list(Node **head, Node **tail){
+    Node *temp = *head;
 
+    while (temp != NULL)
+    {
+        Node *next = temp->next;
+        free(temp);
+
+        temp = next;
+    }
+
+    *head = NULL;
+    *tail = NULL;
 }

@@ -6,8 +6,8 @@ typedef struct Node
 {
     int value;
 
-    Node *next;
-    Node *prev;
+    struct Node *next;
+    struct Node *prev;
 }Node;
 
 Node *create_node(int value);
