@@ -18,8 +18,8 @@ typedef struct HashTable
 
 unsigned int hash(const char *key);
 HashTable *create_table(void);
-int insert(HashTable *table, const char *key, int value);
 Entry *search(HashTable *table, const char *key);
+int insert(HashTable *table, const char *key, int value);
 int remove_entry(HashTable *table, const char *key);
 void print_table(const HashTable *table);
 void destroy_table(HashTable *table);

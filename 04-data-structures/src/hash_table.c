@@ -80,7 +80,16 @@ Entry *search(HashTable *table, const char *key){
 }
 
 int remove_entry(HashTable *table, const char *key){
+    Entry *head = hash(key);
 
+    if(key == head){
+        Entry *temp = head->next;
+
+        free(head);
+        
+        head = temp;
+        
+    }
 }
 
 void print_table(const HashTable *table){
