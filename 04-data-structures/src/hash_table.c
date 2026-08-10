@@ -32,6 +32,11 @@ HashTable *create_table(void){
 
 int insert(HashTable *table, const char *key, int value){
 
+    if(!table|| !key){
+        fprintf(stderr, "Invalid table or key.\n");
+        return 0;
+    }
+
     if (strlen(key) >= KEY_SIZE)
     {
         fprintf(stderr, "key must contain at most 24 characters\n");
@@ -80,22 +85,70 @@ Entry *search(HashTable *table, const char *key){
 }
 
 int remove_entry(HashTable *table, const char *key){
-    Entry *head = hash(key);
 
-    if(key == head){
-        Entry *temp = head->next;
+    unsigned int bucket_index = hash(key);
 
-        free(head);
-        
-        head = temp;
-        
+    Entry *head = table->buckets[bucket_index];
+
+    if(head == NULL){
+        printf("Bucket is empty.\n");
+        return 0;
     }
+
+    if((strcmp(head->key, key)) == 0){
+        table->buckets[bucket_index] = head->next;
+        
+        free(head);
+
+        return 1;
+    }
+
+    Entry *previous = head;
+    Entry *temp = head->next;
+    
+    while(temp != NULL && (strcmp(temp->key, key)) != 0 ){
+        previous = temp;
+        temp = temp->next;
+    }
+
+    if(temp == NULL){
+        return 0;
+    }
+
+    previous->next = temp->next;
+    
+    free(temp);
+
+    return 1;
 }
 
 void print_table(const HashTable *table){
 
+    for(int i = 0; i < TABLE_SIZE; i++){
+        const Entry *bucket = table->buckets[i];
+
+        while(bucket != NULL){
+            printf("Bucket: %d\nKey: %s\nValue: %d\n\n", i, bucket->key, bucket->value);
+
+            bucket = bucket->next;
+        }
+    }
 }
 
 void destroy_table(HashTable *table){
+    for (int i = 0; i < TABLE_SIZE; i++)
+    {
+        Entry *bucket = table->buckets[i];
 
+        while (bucket != NULL)
+        {
+            Entry *temp = bucket->next;
+
+            free(bucket);
+
+            bucket = temp;
+        }
+    }
+
+    free(table);
 }

@@ -103,7 +103,7 @@ c-systems-roadmap/
 - [x] Stack
 - [x] Queue
 - [x] Implement a doubly linked list
-- [ ] Implement a simple hash table
+- [x] Implement a simple hash table
 
 ### 05 — Files and Buffers
 
