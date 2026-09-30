@@ -110,7 +110,7 @@ c-systems-roadmap/
  
 ### 05 — Files, Streams and Buffers
  
-- [ ] Copy a binary file using a fixed-size buffer
+- [x] Copy a binary file using a fixed-size buffer
 - [ ] Save and load structured records from a binary file
 - [ ] Update a fixed-size record using random file access
 - [ ] Analyze a log file line by line
