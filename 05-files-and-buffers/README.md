@@ -1,35 +1,45 @@
-# 05 — Files and Buffers
+# 05 — Files, Streams and Buffers
 
-Simple C program that copies a file using a fixed-size buffer.
+This module focuses on file handling, streams, buffering, binary data, and structured file processing in C.
 
-The goal of this exercise is to practice binary file I/O with `fread()` and `fwrite()`, while understanding how data is transferred in blocks instead of loading the entire file into memory.
+The goal is to understand how data moves between files and memory, how fixed-size buffers are used during I/O operations, and how files can be read, written, parsed, and updated.
 
-## What it practices
+---
 
-- `FILE *`
+## Exercises
+
+- [x] Copy a binary file using a fixed-size buffer
+- [ ] Save and load structured records from a binary file
+- [ ] Update a fixed-size record using random file access
+- [ ] Analyze a log file line by line
+- [ ] Parse a CSV file into validated structs
+- [ ] Copy a file using POSIX `open`, `read`, `write`, and `close`
+
+---
+
+## Current Concepts
+
+This module practices concepts such as:
+
+- `FILE *` streams
 - `fopen()` and `fclose()`
-- binary modes (`rb` / `wb`)
-- `fread()` and `fwrite()`
+- text and binary file modes
 - fixed-size buffers
-- checking read and write errors
+- `fread()` and `fwrite()`
+- sequential file access
+- error handling during file operations
 
-## How it works
+Later exercises will also introduce:
 
-```txt
-source file
-    ↓
-  fread()
-    ↓
-fixed buffer
-    ↓
-  fwrite()
-    ↓
-destination file
-```
+- structured binary data
+- `fseek()` and random access
+- line-based input with `fgets()`
+- CSV parsing
+- POSIX file descriptors
 
-The source file is read in blocks of `BUFFER_SIZE` bytes, and each block is written to the destination file.
+---
 
-## Structure
+## Project Structure
 
 ```txt
 05-files-and-buffers/
@@ -44,6 +54,32 @@ The source file is read in blocks of `BUFFER_SIZE` bytes, and each block is writ
 └── README.md
 ```
 
+The structure will expand as the remaining exercises are implemented.
+
+---
+
+## Completed Exercises
+
+### Binary File Copy
+
+Copies a file using a fixed-size buffer instead of loading the entire file into memory.
+
+```txt
+source file
+    ↓
+  fread()
+    ↓
+fixed-size buffer
+    ↓
+  fwrite()
+    ↓
+destination file
+```
+
+The exercise practices block-based file I/O and handling partial reads and writes.
+
+---
+
 ## Build
 
 ```bash
@@ -55,3 +91,8 @@ gcc src/buffers.c src/buffers-main.c -Iinclude -Wall -Wextra -std=c11 -o buffers
 ```bash
 ./buffers
 ```
+
+---
+
+> This module is primarily based on the C standard library.  
+> The final exercise introduces POSIX file descriptors as preparation for the next module on processes and IPC.
