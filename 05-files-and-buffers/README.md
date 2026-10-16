@@ -2,7 +2,7 @@
 
 This module focuses on file handling, streams, buffering, binary data, and structured file processing in C.
 
-The goal is to understand how data moves between files and memory, how buffers are used during I/O operations, and how structured records can be stored, accessed, and updated in binary files.
+The goal is to understand how data moves between files and memory, how buffers are used during I/O operations, and how structured data can be stored, retrieved, updated, and analyzed.
 
 ---
 
@@ -11,7 +11,7 @@ The goal is to understand how data moves between files and memory, how buffers a
 - [x] Copy a binary file using a fixed-size buffer
 - [x] Save and load structured records from a binary file
 - [x] Update a fixed-size record using random file access
-- [ ] Analyze a log file line by line
+- [x] Analyze a log file line by line
 - [ ] Parse a CSV file into validated structs
 - [ ] Copy a file using POSIX `open`, `read`, `write`, and `close`
 
@@ -29,12 +29,16 @@ This module practices concepts such as:
 - sequential and random file access
 - `fseek()` and file positioning
 - structured binary records
-- error handling during file operations
+- line-based input with `fgets()`
+- string searching with `strstr()`
+- EOF detection with `feof()`
+- error detection with `ferror()`
+- dynamic memory allocation
+- file processing and statistical reporting
 
 Later exercises will introduce:
 
-- line-based input with `fgets()`
-- CSV parsing and validation
+- CSV parsing and field validation
 - POSIX file descriptors
 
 ---
@@ -46,19 +50,23 @@ Later exercises will introduce:
 ├── include/
 │   ├── buffers.h
 │   ├── structs.h
-│   └── records.h
+│   ├── records.h
+│   └── logs.h
 ├── src/
 │   ├── buffers.c
 │   ├── buffers-main.c
 │   ├── structs.c
 │   ├── structs-main.c
 │   ├── records.c
-│   └── records_main.c
+│   ├── records_main.c
+│   ├── logs.c
+│   └── logs-main.c
 ├── data/
 │   ├── sample.bin
 │   ├── sample_copy.bin
 │   ├── employee.bin
-│   └── products.bin
+│   ├── products.bin
+│   └── logs.txt
 └── README.md
 ```
 
@@ -129,14 +137,51 @@ products.bin
 
 The record position is calculated using its index and `sizeof(Product)`, allowing direct access without scanning the entire file.
 
+Practices calculating byte offsets, positioning streams, reading individual records, and overwriting existing binary data.
+
+### 4. Log File Analysis
+
+Reads a text-based log file line by line and generates a statistical report based on event severity.
+
+The analyzer recognizes four log levels: `INFO`, `WARNING`, `ERROR`, and `DEBUG`.
+
+```txt
+logs.txt
+   ↓
+ fopen()
+   ↓
+ fgets()
+   ↓
+Analyze log level
+   ↓
+Update counters
+   ↓
+Generate report
+```
+
+Each log entry follows the format:
+
+```txt
+YYYY-MM-DD HH:MM:SS [LEVEL] Message
+```
+
+The generated report includes:
+
+- total lines analyzed
+- number of INFO, WARNING, ERROR, and DEBUG events
+- total classified events
+- number of unrecognized entries
+
 The exercise practices:
 
-- appending fixed-size binary records
-- calculating byte offsets
-- positioning file streams with `fseek()`
-- reading individual records using `fread()`
-- overwriting existing records using `fwrite()`
-- validating file operations and handling errors
+- reading text files with `fgets()`
+- identifying log levels using `strstr()`
+- processing files incrementally
+- detecting EOF and read errors
+- dynamically allocating a report structure
+- generating formatted terminal statistics
+
+The current implementation uses a fixed-size line buffer and assumes log entries fit within it.
 
 ---
 
@@ -162,6 +207,12 @@ gcc src/structs.c src/structs-main.c -Iinclude -Wall -Wextra -std=c11 -o structs
 gcc src/records.c src/records_main.c -Iinclude -Wall -Wextra -std=c11 -o records
 ```
 
+### Log File Analysis
+
+```bash
+gcc src/logs.c src/logs-main.c -Iinclude -Wall -Wextra -std=c11 -o logs
+```
+
 ---
 
 ## Run
@@ -178,7 +229,11 @@ gcc src/records.c src/records_main.c -Iinclude -Wall -Wextra -std=c11 -o records
 ./records
 ```
 
-**Note:** The random access exercise uses `data/products.bin`. The file must exist before execution because it is opened using `r+b`, which preserves existing data.
+```bash
+./logs
+```
+
+**Note:** Run the executables from the module directory so relative paths to the `data/` folder resolve correctly. The random access exercise requires an existing `products.bin` file because it uses `r+b`.
 
 ---
 
