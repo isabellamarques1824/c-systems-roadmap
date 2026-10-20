@@ -54,7 +54,7 @@ Report *analyze_log(FILE *logs) {
     char log[200];
 
     // Read and process the file until EOF.
-    while (fgets(log, sizeof log, logs) != NULL) {
+    while (fgets(log, sizeof(log), logs) != NULL) {
 
         report->total_lines++;
 
