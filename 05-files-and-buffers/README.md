@@ -12,34 +12,32 @@ The goal is to understand how data moves between files and memory, how buffers a
 - [x] Save and load structured records from a binary file
 - [x] Update a fixed-size record using random file access
 - [x] Analyze a log file line by line
-- [ ] Parse a CSV file into validated structs
+- [x] Parse a CSV file into validated structs
 - [ ] Copy a file using POSIX `open`, `read`, `write`, and `close`
 
 ---
 
 ## Current Concepts
 
-This module practices concepts such as:
+This module practices:
 
-- `FILE *` streams
-- `fopen()` and `fclose()`
-- text and binary file modes
-- fixed-size buffers
-- `fread()` and `fwrite()`
-- sequential and random file access
+- File streams and `FILE *`
+- `fopen()`, `fclose()`, `fread()`, and `fwrite()`
+- Text and binary file operations
+- Fixed-size buffers and buffered I/O
+- Sequential and random file access
 - `fseek()` and file positioning
-- structured binary records
-- line-based input with `fgets()`
-- string searching with `strstr()`
-- EOF detection with `feof()`
-- error detection with `ferror()`
-- dynamic memory allocation
-- file processing and statistical reporting
+- Structured binary records
+- Line-based reading with `fgets()`
+- String processing with `strchr()`, `strstr()`, `strlen()`, and `strcpy()`
+- CSV parsing and delimiter handling
+- Numeric conversions with `strtol()` and `strtof()`
+- Input validation and error handling
+- Pointer arithmetic and memory safety
+- Dynamic memory allocation
+- Statistical reporting
 
-Later exercises will introduce:
-
-- CSV parsing and field validation
-- POSIX file descriptors
+The remaining exercise introduces POSIX file descriptors and low-level I/O operations.
 
 ---
 
@@ -51,7 +49,8 @@ Later exercises will introduce:
 │   ├── buffers.h
 │   ├── structs.h
 │   ├── records.h
-│   └── logs.h
+│   ├── logs.h
+│   └── csv_file.h
 ├── src/
 │   ├── buffers.c
 │   ├── buffers-main.c
@@ -60,17 +59,20 @@ Later exercises will introduce:
 │   ├── records.c
 │   ├── records_main.c
 │   ├── logs.c
-│   └── logs-main.c
+│   ├── logs-main.c
+│   ├── csv_file.c
+│   └── csv_file-main.c
 ├── data/
 │   ├── sample.bin
 │   ├── sample_copy.bin
 │   ├── employee.bin
 │   ├── products.bin
-│   └── logs.txt
+│   ├── logs.txt
+│   └── products.csv
 └── README.md
 ```
 
-The structure will expand as the remaining exercises are implemented.
+The structure will expand as the remaining exercise is implemented.
 
 ---
 
@@ -137,7 +139,7 @@ products.bin
 
 The record position is calculated using its index and `sizeof(Product)`, allowing direct access without scanning the entire file.
 
-Practices calculating byte offsets, positioning streams, reading individual records, and overwriting existing binary data.
+Practices byte offsets, file positioning, reading individual records, and overwriting existing binary data.
 
 ### 4. Log File Analysis
 
@@ -165,77 +167,26 @@ Each log entry follows the format:
 YYYY-MM-DD HH:MM:SS [LEVEL] Message
 ```
 
-The generated report includes:
+The report includes total lines analyzed, counts for each log level, classified events, and unrecognized entries.
 
-- total lines analyzed
-- number of INFO, WARNING, ERROR, and DEBUG events
-- total classified events
-- number of unrecognized entries
+Practices line-based file reading, `strstr()`, EOF detection, read error handling, dynamic memory allocation, and terminal reporting.
 
-The exercise practices:
+### 5. CSV Parsing and Validation
 
-- reading text files with `fgets()`
-- identifying log levels using `strstr()`
-- processing files incrementally
-- detecting EOF and read errors
-- dynamically allocating a report structure
-- generating formatted terminal statistics
+Reads a CSV file containing product records, converts text fields into structured data, validates each product, and generates a processing report.
 
-The current implementation uses a fixed-size line buffer and assumes log entries fit within it.
+Each record follows the format:
 
----
-
-## Build
-
-Run the following commands from the module directory.
-
-### Binary File Copy
-
-```bash
-gcc src/buffers.c src/buffers-main.c -Iinclude -Wall -Wextra -std=c11 -o buffers
+```csv
+id,name,quantity,price
+1,Keyboard,15,120.50
+2,Mouse,30,59.90
+3,Monitor,8,899.00
 ```
 
-### Structured Binary Records
+The parser separates fields using `strchr()` and null terminators, converts numeric values with `strtol()` and `strtof()`, and stores validated products in a fixed-capacity array.
 
-```bash
-gcc src/structs.c src/structs-main.c -Iinclude -Wall -Wextra -std=c11 -o structs
-```
-
-### Random File Access
-
-```bash
-gcc src/records.c src/records_main.c -Iinclude -Wall -Wextra -std=c11 -o records
-```
-
-### Log File Analysis
-
-```bash
-gcc src/logs.c src/logs-main.c -Iinclude -Wall -Wextra -std=c11 -o logs
-```
-
----
-
-## Run
-
-```bash
-./buffers
-```
-
-```bash
-./structs
-```
-
-```bash
-./records
-```
-
-```bash
-./logs
-```
-
-**Note:** Run the executables from the module directory so relative paths to the `data/` folder resolve correctly. The random access exercise requires an existing `products.bin` file because it uses `r+b`.
-
----
-
-> This module primarily uses the C standard library for file operations.
-> The final exercise introduces POSIX file descriptors as preparation for the next module on processes and IPC.
+```txt
+products.csv
+     ↓
+   fgets
