@@ -88,11 +88,27 @@ Product *read_product(char *string_product, Product *product){
 
 }
 
+
 // função 3 validar produto
-Product *validate_product(Product product){
-    if(product.id <= 0){
+Product *validate_product(Product *product){
+    if(!product){
         return NULL;
     }
+
+    if(product->id <= 0){
+        return NULL;
+    }
+    if(strlen(product->name) == 0){
+        return NULL;
+    }
+    if(product->quantity < 0){
+        return NULL;
+    }
+    if(product->price <= 0){
+        return NULL;
+    }
+
+    return product;
     
 }
 
